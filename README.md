@@ -1,50 +1,78 @@
-# React + TypeScript + Vite
+# Online Shop CA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- A simple overview of use/purpose. -->
 
-Currently, two official plugins are available:
+Noroff Course Assignment for Javascript Frameworks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Brief](docs/.pdf)
+- [Criteria](docs/.pdf)
 
-## Expanding the ESLint configuration
+- [Design Prototype Desktop]()
+- [Design Prototype Mobile]()
+- [Style Guide]()
+- [Repository]()
+- [Hosted Demo]()
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Live app
 
-- Configure the top-level `parserOptions` property like this:
+This project is deployed on [Netlify]().
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Description
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<!-- An in-depth paragraph about your project and overview of use. -->
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+The main purpose of this CA is to take the skills learned of React to build an eCom store.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- CSS framework `Tailwind`,
+- REST API advanced features like GET, POST, PUT, DELETE
+- array functions: `filter`, `map`, `forEach`
+- destructuring
+- `JWT` token and API authorization concepts
+- usage of `local storage`
+- `Vite` bundler
+- effective workflow via `Eslint`, `Prettier`, commit hooks (`Husky`)
+- security concepts (`Dompurify`)
+- `.env` file to manage secrets for local development
+
+- responsive design (concepts, media queries, etc)
+- DRY (structured code, etc)
+- accessibility concepts (WCAG)
+- developer tools (VS Code, Prettier, DevTools, Github, Postman, etc)
+- code validation tools
+
+## API
+
+- The API used in this project can be found under Online Shop Endpoints in the Noroff API documentation. [v2](https://docs.noroff.dev/docs/v2).
+- Online Shop API routes require both a JWT token and an API Key.
+
+## Feature implemented
+
+- unregistered user can view and search through Products
+- user can:
+  - view the individual product page
+  - view the current number of items in the cart by Card icon
+  - add a product to card
+  - view in the Cart page a list all of the products as well as a total if there are any
+  - view the normal price and the discount price, if there are any
+  - view notification message in the checkout page as well as a link that lets a user go back to the store
+  - contact the store by contact form
+  - search and filter products through an advance look-ahead search (auto-complete search bar)
+
+<!-- - Describe any prerequisites, libraries, OS version, etc., needed before installing the program.
+- ex. Windows 10 -->
+
+## Validation
+
+The web application code has been validated using the following tools:
+
+- check html validity: <https://validator.w3.org/>
+- check css validity: <https://jigsaw.w3.org/css-validator/>
+- check redirect links: <https://validator.w3.org/checklink>
+- check accessibility: <https://www.accessibilitychecker.org/>
+
+## Dependencies
+
+To develop the web application I have used `Visual Studio Code` with `Prettier` formatter extension.
+
+> npm install
+> npm run dev
