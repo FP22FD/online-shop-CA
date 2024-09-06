@@ -1,14 +1,15 @@
-import Items from "../pages/cardpage/Items";
-import Product from "../pages/productpage/Product";
-import Checkout from "../pages/checkoutpage/Checkout";
-import Contact from "../pages/contactpage/Contact";
-import Home from "../pages/homepage/Home";
-
+import Items from "../pages/card/Items";
+import Product from "../pages/product/Product";
+import Checkout from "../pages/checkout/Checkout";
+import Contact from "../pages/contact/Contact";
+import Home from "../pages/home/Home";
+import MainLayout from "../components/layout/MainLayout";
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 
 function App() {
 
@@ -37,9 +38,11 @@ function App() {
 
   return (
     <>
-      {
-        <RouterProvider router={router} />
-      }
+      <MainLayout>
+        {
+          <RouterProvider router={router} />
+        }
+      </MainLayout>
     </>
   )
 }
