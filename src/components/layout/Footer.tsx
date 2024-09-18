@@ -7,13 +7,13 @@ function Footer() {
       <div className="pt-9">
         <div className="flex justify-center mb-9">
           <Link className="mr-9 duration-300 ease-in hover:scale-125" to="https://www.instagram.com/">
-            <IoLogoInstagram className="w-6 h-6 fill-current text-typo-default-dark" />
+            <IoLogoInstagram className="w-6 h-6" />
           </Link>
           <Link className="mr-9 duration-300 ease-in hover:scale-125" to="https://www.facebook.com/">
-            <IoLogoFacebook className="w-6 h-6 fill-current text-typo-default-dark" />
+            <IoLogoFacebook className="w-6 h-6" />
           </Link>
           <Link className="mr-9 duration-300 ease-in hover:scale-125" to="https://www.tiktok.com/">
-            <IoLogoTiktok className="w-6 h-6 fill-current text-typo-default-dark" />
+            <IoLogoTiktok className="w-6 h-6" />
           </Link>
         </div>
       </div>
