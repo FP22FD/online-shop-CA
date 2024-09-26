@@ -1,12 +1,11 @@
+import Products from './Products';
+
 function Home() {
-
-    return (
-        <div>
-
-            Products
-
-        </div>
-    );
+  return (
+    <div>
+      <Products />
+    </div>
+  );
 }
 
-export default Home
+export default Home;
