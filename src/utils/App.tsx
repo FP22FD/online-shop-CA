@@ -1,13 +1,13 @@
 import Checkout from '../pages/checkout/Checkout';
 import Contact from '../pages/contact/Contact';
 import Home from '../pages/home/Home';
-import MainLayout from '../components/layout/MainLayout';
+import Layout from '../components/layout/Layout';
 import PageNotFound from '../pages/notFound/NotFound';
-
-import { createBrowserRouter, Link, RouterProvider, useRouteError } from 'react-router-dom';
-import Products from '../pages/products/Products';
 import Cart from '../pages/cart/Cart';
 import ProductDetails from '../pages/product/ProductDetails';
+import Products from '../pages/home/Products';
+import { CartProvider } from '../pages/cart/CartContext';
+import { createBrowserRouter, Link, RouterProvider, useRouteError } from 'react-router-dom';
 
 function ErrorPage() {
   const error = useRouteError();
@@ -26,7 +26,7 @@ function ErrorPage() {
 function App() {
   const router = createBrowserRouter([
     {
-      element: <MainLayout />,
+      element: <Layout />,
       errorElement: <ErrorPage />,
       children: [
         {
@@ -42,7 +42,7 @@ function App() {
           element: <ProductDetails />,
         },
         {
-          path: '/card',
+          path: '/cart',
           element: <Cart />,
         },
         {
@@ -61,7 +61,11 @@ function App() {
     },
   ]);
 
-  return <>{<RouterProvider router={router} />}</>;
+  return (
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  );
 }
 
 export default App;
