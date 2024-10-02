@@ -7,7 +7,7 @@ function Layout() {
     <div className="min-h-screen grid grid-cols-12 grid-rows-[min-content_1fr_min-content]">
       <Header />
 
-      <main className="row-start-2 col-span-12">
+      <main className="row-start-2 col-span-12 p-6 md:px-12 lg:px-16">
         <Outlet />
       </main>
 
