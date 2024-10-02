@@ -44,7 +44,6 @@ function Form() {
   });
 
   function onFormSubmit(data: FormValues) {
-    console.log('ciao');
     console.log(data);
   }
 
@@ -58,7 +57,7 @@ function Form() {
   const errorClassNames = 'text-error text-sm pt-1';
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)} className="flex flex-col py-6 space-y-6 md:p-6 w-full" noValidate>
+    <form onSubmit={handleSubmit(onFormSubmit)} className="flex flex-col py-6 space-y-6 md:p-6" noValidate>
       <label htmlFor="fullname" className={labelClassNames}>
         <span>Full name</span>
         <input
