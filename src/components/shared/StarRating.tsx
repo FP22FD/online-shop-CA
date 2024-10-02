@@ -17,7 +17,7 @@ const StarRating = ({ rating }: RatingProps) => {
 
   return (
     <div className="flex gap-2 justify-between w-full">
-      <div className="flex">{stars}</div>
+      <span className="flex">{stars}</span>
     </div>
   );
 };
