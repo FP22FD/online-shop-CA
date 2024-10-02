@@ -1,28 +1,41 @@
+import { useEffect, useState } from 'react';
 import { ErrorHandler } from '../components/shared/errorHandler';
+import { API_PRODUCT } from '../settings/endpoints';
 import { ProductResponse, SingleProduct } from '../types/products.type';
 
-export async function FetchProduct(id: string): Promise<[string, SingleProduct | null]> {
-  if (!id) {
-    return ['Invalid product ID', null];
-  }
+export function useFetchProduct(id: string): { data: SingleProduct | null; loading: boolean; error: string } {
+  const [data, setData] = useState<SingleProduct | null>(null);
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
-  try {
-    const url = `https://v2.api.noroff.dev/online-shop/${id}`;
+  useEffect(() => {
+    const fechtData = async () => {
+      try {
+        const response = await fetch(API_PRODUCT(id));
 
-    const response = await fetch(url);
+        if (response.ok) {
+          const productData: ProductResponse = await response.json();
+          const data = productData.data;
+          console.log(productData);
+          setData(data);
+          setError('');
+        } else {
+          const eh = new ErrorHandler(response);
+          const msg = await eh.getErrorMessage();
+          setError(msg);
+          setData(null);
+        }
+      } catch (error) {
+        setError('Could not show the product!');
+        console.log(error);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    if (response.ok) {
-      const productData: ProductResponse = await response.json();
-      console.log(productData);
-      return ['', productData.data];
-    }
+    fechtData();
+  }, [id]);
 
-    const eh = new ErrorHandler(response);
-    const msg = await eh.getErrorMessage();
-
-    return [msg, null];
-  } catch (ev) {
-    console.error(ev);
-    return ['Could not show the product!', null];
-  }
+  return { data, loading, error };
 }

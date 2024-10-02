@@ -1,25 +1,44 @@
+import { useState, useEffect } from 'react';
 import { ErrorHandler } from '../components/shared/errorHandler';
 import { AllProductsResponse, Product } from '../types/products.type';
+import { API_PRODUCTS } from '../settings/endpoints';
 
-export async function FetchProducts(): Promise<[string, Product[] | null | undefined]> {
-  try {
-    const url = 'https://v2.api.noroff.dev/online-shop';
+export function useFetchProducts() {
+  const [data, setData] = useState<Product[] | null>(null);
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
-    const response = await fetch(url);
+  useEffect(() => {
+    const fechtData = async () => {
+      try {
+        // Invalid query parameters to trigger 400
+        // const response = await fetch(API_PRODUCTS + '/invalidPath');
+        const response = await fetch(API_PRODUCTS);
 
-    if (response.ok) {
-      const listingsData: AllProductsResponse = await response.json();
-      const data = listingsData.data;
-      console.log(data);
+        if (response.ok) {
+          const productsData: AllProductsResponse = await response.json();
+          const data = productsData.data;
+          setData(data);
+          console.log(data);
 
-      return ['', data];
-    }
+          setError('');
+        } else {
+          const eh = new ErrorHandler(response);
+          const msg = await eh.getErrorMessage();
+          setError(msg);
+          setData(null);
+        }
+      } catch {
+        setError('Could not show the products!');
+        console.log(error);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    const eh = new ErrorHandler(response);
-    const msg = await eh.getErrorMessage();
+    fechtData();
+  }, [error]);
 
-    return [msg, null];
-  } catch (ev) {
-    return ['Could not show the listings!', null];
-  }
+  return { data, loading, error };
 }
