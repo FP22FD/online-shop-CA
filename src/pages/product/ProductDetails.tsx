@@ -6,6 +6,7 @@ import Spinner from '../../components/shared/Spinner';
 import { useContext, useState } from 'react';
 import CartContext from '../cart/CartContext';
 import { CartProduct } from '../../types/products.type';
+import { TbTruckDelivery } from 'react-icons/tb';
 
 const ProductDetails = () => {
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
@@ -77,7 +78,7 @@ const ProductDetails = () => {
 
   return (
     <section className="flex-grow">
-      <div className="container mx-auto mt-10 px-4 md:px-0">
+      <div className="container mx-auto mt-10 md:px-0">
         <div className="flex items-center">
           <Link
             to="/"
@@ -97,53 +98,61 @@ const ProductDetails = () => {
 
         <div className="shadow-md my-10 border">
           <div className="flex flex-col md:flex-row gap-6 p-5">
-            <div className="w-full md:w-1/3 flex-shrink-0">
-              {data.image ? (
-                <img
-                  className="object-cover w-full max-h-64"
-                  src={data.image.url}
-                  alt={data.image.alt || 'Product image'}
-                />
-              ) : (
-                <p className="text-center">No image available.</p>
+            <div className="w-full md:w-1/3 flex-shrink-0 relative">
+              <img
+                className="object-cover w-full max-h-64"
+                src={data.image.url}
+                alt={data.image.alt || 'Product image'}
+              />
+              {discountExists && (
+                <div className="bg-accent-purple text-neutral-light text-lg font-semibold absolute p-6 right-1 top-1 w-10 h-10 rounded-full inline-flex items-center justify-center shrink-0 grow-0">
+                  {discountPercentage}%
+                </div>
               )}
             </div>
 
             <div className="w-full md:w-2/3 flex flex-col justify-between p-4 border">
               <h2 className="mb-2 tracking-tight text-text font-semibold text-xl">{data.title}</h2>
               <p className="line-clamp-2 whitespace-break-spaces mb-2">{data?.description}</p>
-              <div className="flex items-end gap-4 mb-2">
-                <p className=" text-text">{data.price}</p>
-                <p className="line-through text-text text-xs">{data.discountedPrice}</p>
-                {discountExists && (
-                  <span className="text-dark text-xs bg-primary-light rounded p-[1px]">Save {discountAmount}</span>
-                )}
-                {discountExists && (
-                  <div className="bg-primary-light text-error text-lg font-semibold absolute rounded p-1 top-1 right-1 hidden">
-                    {discountPercentage}%
-                  </div>
-                )}
+
+              <div className="flex items-end space-x-1 md:gap-4 mb-2">
+                <div className="font-medium">
+                  {discountExists && <p className="text-text justify-center">{data.discountedPrice}</p>}
+                </div>
+
+                <div className="flex gap-2 items-center">
+                  {discountExists ? (
+                    <p>
+                      <span className="text-text line-through text-xs">{data.price}</span>
+                    </p>
+                  ) : (
+                    <p>
+                      <span className="text-text font-medium">{data.price}</span>
+                    </p>
+                  )}
+
+                  <p>
+                    {discountExists && (
+                      <span className="text-accent-purple text-xs font-bold rounded p-[1px]">
+                        Save {discountAmount}
+                      </span>
+                    )}
+                  </p>
+                </div>
               </div>
+
               <StarRating rating={data.rating || 0} />
 
               <div className="mt-4 flex items-center gap-2 md:gap-4">
-                <div className="flex items-center border border-gray-300 rounded">
-                  <button
-                    className="px-3 py-2 text-gray-600 hover:bg-gray-200"
-                    aria-label="Decrease quantity"
-                    type="button"
-                  >
-                    -
-                  </button>
-                  <span className="px-3 py-1 text-dark">1</span>
-                  <button
-                    className="px-3 py-2 text-gray-600 hover:bg-gray-200"
-                    aria-label="Increase quantity"
-                    type="button"
-                  >
-                    +
-                  </button>
+                <div className="flex items-center border py-[3px] px-1 rounded">
+                  <i className="pl-1 pr-2 py-2 text-neutral-muted flex gap-1 text-xs font-bold">
+                    <span className="place-content-center">
+                      <TbTruckDelivery />
+                    </span>
+                    Free shipping
+                  </i>
                 </div>
+
                 <button
                   onClick={() => handleAddToCart(product)}
                   className="p-3 rounded ring-[1px] bg-primary-light ring-primary-light ring-inset text-primary-dark font-bold hover:bg-primary hover:text-neutral-light transition-colors duration-200 text-xs"
@@ -159,17 +168,20 @@ const ProductDetails = () => {
           <div className="h-2">{feedbackMessage && <p className="text-success text-center">{feedbackMessage}</p>}</div>
 
           <article className="flex flex-col mt-6 p-5">
-            <h3 className="font-bold mt-6 border-b border-gray-300 pb-2">Reviews</h3>
+            <h3 className="font-bold mt-6 border-b pb-2">Reviews</h3>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {data.reviews.length > 0 ? (
                 data.reviews.map((review) => (
-                  <div className="p-4 border border-gray-300 rounded shadow-sm bg-secondary-light" key={review.id}>
+                  <div
+                    className="p-4 border rounded shadow-sm bg-secondary-light flex flex-col justify-between"
+                    key={review.id}
+                  >
                     <div className="mb-4">
                       <StarRating rating={review.rating} />
                     </div>
                     <blockquote>
                       <i>{review.description}</i>
-                      <cite className="flex gap-2 justify-end items-center mt-4">
+                      <cite className="flex gap-2 justify-end items-center">
                         <span className="text-sm text-neutral-muted">-</span>
                         <p className="text-sm text-neutral-muted">{review.username}</p>
                       </cite>
