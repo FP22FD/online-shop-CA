@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useEffect } from 'react';
 
 type FormValues = {
   fullName: string;
@@ -46,10 +45,6 @@ function Form() {
   function onFormSubmit(data: FormValues) {
     console.log(data);
   }
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   const inputClassNames =
     'w-full rounded-md bg-secondary-light border border-secondary-light focus:ring focus:ring-primary-light focus:outline-0 border focus:border-primary p-2';
