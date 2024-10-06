@@ -15,8 +15,8 @@ const Products = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-      <SearchBar />
-      <div className="border-b border-secondary-dark mb-5 flex justify-between text-sm">
+      <SearchBar products={filteredProducts} />
+      <div className="border-b border-secondary-dark m-5 flex justify-between text-sm">
         <button type="button" className="text-dark flex items-center pb-2 pr-2 border-b-2 border-primary uppercase">
           <h1 className="font-semibold inline-block">Products</h1>
         </button>
