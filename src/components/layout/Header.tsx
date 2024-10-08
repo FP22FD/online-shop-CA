@@ -118,24 +118,33 @@ export function MenuMobile() {
       {isMenuOpen && (
         <div
           id="mobile-menu"
-          className="md:hidden absolute top-28 right-0 p-6 w-svw bg-neutral-light"
+          className={`md:hidden fixed top-0 right-0 h-full w-64 bg-neutral-light shadow-lg z-20 transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
           role="menu"
           aria-label="Mobile navigation"
         >
-          {pageLinks.map(({ label, to }) => (
-            <NavLink
-              key={to}
-              className={({ isActive }) =>
-                `flex px-2 py-2 ${isActive ? 'underline  decoration-primary decoration-4' : 'bg-transparent'}`
-              }
-              to={to}
-              onClick={() => setMenuOpen(false)}
-              aria-label={`Go to ${label}`}
-              role="menuitem"
-            >
-              {label}
-            </NavLink>
-          ))}
+          <div className="p-6 flex justify-between items-center">
+            <h2 className="text-xl font-semibold">Menu</h2>
+            <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-text focus:outline-none">
+              <IoCloseOutline className="w-6 h-6" aria-hidden="true" />
+            </button>
+          </div>
+
+          <div className="p-6">
+            {pageLinks.map(({ label, to }) => (
+              <NavLink
+                key={to}
+                className={({ isActive }) =>
+                  `block px-2 py-2 ${isActive ? 'underline decoration-primary decoration-4' : 'bg-transparent'}`
+                }
+                to={to}
+                onClick={() => setMenuOpen(false)}
+                aria-label={`Go to ${label}`}
+                role="menuitem"
+              >
+                {label}
+              </NavLink>
+            ))}
+          </div>
         </div>
       )}
     </>
