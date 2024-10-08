@@ -12,7 +12,7 @@ function Card({ data }: CardProps) {
   const altText = data.image.alt || 'Image of' + data.title;
 
   const discountExists = data.discountedPrice < data.price;
-  const discountAmount = discountExists ? (data.price - data.discountedPrice).toFixed(2) : '0.00';
+  const discountAmount = discountExists ? (data.price - data.discountedPrice).toFixed() : '0.00';
 
   const discountPercentage = discountExists
     ? (((data.price - data.discountedPrice) / data.price) * 100).toFixed()
