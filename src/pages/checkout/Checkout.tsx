@@ -1,4 +1,3 @@
-// import { useContext } from 'react';
 import { IoArrowBackOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +18,7 @@ const Checkout = () => {
               <Link
                 type="button"
                 to="/"
-                className="flex items-center px-3 py-2 text-xs rounded ring-[1px] ring-primary-light ring-inset hover:bg-primary text-primary-dark hover:text-neutral-light font-semibold transition-colors duration-200 mb-2"
+                className="flex items-center px-3 py-2 text-base rounded ring-[1px] bg-primary-light ring-primary-light ring-inset hover:bg-primary text-primary-dark hover:text-neutral-light font-bold transition-colors duration-200 mb-2"
               >
                 <IoArrowBackOutline aria-hidden="true" className="mr-2" />
                 Go back to store
