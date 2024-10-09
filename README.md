@@ -8,7 +8,7 @@ This project is a Course Assignment for JavaScript Frameworks at Noroff, focused
 - [Criteria](docs/criteria.pdf)
 
 - [Repository](https://github.com/FP22FD/online-shop-CA)
-- [Hosted Demo on Netlify]()
+- [Hosted Demo on Netlify](https://onlineshop-ca.netlify.app/)
 
 ## Description
 
