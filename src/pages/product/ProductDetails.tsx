@@ -1,12 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
-import StarRating from '../../components/shared/StarRating';
-import { useFetchProduct } from '../../hooks/fetchProduct';
+import StarRating from '../../shared/components/StarRating';
+import { useFetchProduct } from './hooks/fetchProduct';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import Spinner from '../../components/shared/Spinner';
+import Spinner from '../../shared/components/Spinner';
 import { useContext, useState } from 'react';
-import CartContext from '../cart/CartContext';
-import { CartProduct } from '../../types/products.type';
-import { TbTruckDelivery } from 'react-icons/tb';
+import CartContext from '../../contexts/CartContext';
+import { CartProduct } from '../../types/CartProduct.type';
+import Reviews from './components/Reviews';
 
 const ProductDetails = () => {
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
@@ -78,7 +78,7 @@ const ProductDetails = () => {
 
   return (
     <section className="flex-grow">
-      <div className="container mx-auto mt-10 md:px-0">
+      <div className="container mx-auto mt-10 md:px-8 lg:px-16 xl:px-24">
         <div className="flex items-center mb-2">
           <Link
             to="/"
@@ -96,17 +96,20 @@ const ProductDetails = () => {
           </button>
         </div>
 
-        <div className="shadow-md my-10 border">
+        <div className="shadow-md my-10 border max-w-5xl mx-auto">
           <div className="flex flex-col sm:flex-row gap-6 p-4">
             <div className="w-full sm:w-1/3 flex-shrink-0 relative">
-              <img
-                className="object-cover w-full h-full"
-                src={data.image.url}
-                alt={data.image.alt || 'Product image'}
-              />
+              <div className="relative">
+                <img
+                  className="w-full object-cover h-64 xl:h-96"
+                  width={500}
+                  src={data.image.url}
+                  alt={data.image.alt || 'Product image'}
+                />
+              </div>
               {discountExists && (
                 <div className="absolute right-1 top-1 flex items-center">
-                  <div className="bg-accent-purple text-neutral-light font-semibold flex items-center justify-center flex-grow rounded-full text-lg p-6 md:p-8 md:text-2xl w-10 h-10 lg:w-6 lg:h-6">
+                  <div className="bg-accent-purple text-neutral-light font-semibold flex items-center justify-center flex-grow rounded-full text-lg p-6 xl:p-8 xl:text-2xl w-10 h-10 lg:w-6 lg:h-6">
                     {discountPercentage}%
                   </div>
                 </div>
@@ -147,17 +150,12 @@ const ProductDetails = () => {
 
               <div className="mt-4 flex items-center gap-2 md:gap-4">
                 <div className="flex items-center border py-[3px] px-1 rounded">
-                  <i className="pl-1 pr-2 py-2 text-neutral-muted flex gap-1 text-xs font-bold">
-                    <span className="place-content-center">
-                      <TbTruckDelivery />
-                    </span>
-                    Free shipping
-                  </i>
+                  <i className="pl-1 pr-2 py-2 text-neutral-muted flex gap-1 text-sm font-bold">Free shipping</i>
                 </div>
 
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="p-3 rounded ring-[1px] bg-primary-light ring-primary-light ring-inset text-primary-dark font-bold hover:bg-primary hover:text-neutral-light transition-colors duration-200 text-xs"
+                  className="p-3 rounded ring-[1px] bg-primary-light ring-primary-light ring-inset text-primary-dark font-bold hover:bg-primary hover:text-neutral-light transition-colors duration-200 text-sm"
                   type="button"
                   aria-label="Add product to cart"
                 >
@@ -170,30 +168,7 @@ const ProductDetails = () => {
           <div className="h-2">{feedbackMessage && <p className="text-success text-center">{feedbackMessage}</p>}</div>
 
           <article className="flex flex-col mt-6 p-5">
-            <h3 className="font-bold mt-6 border-b pb-2">Reviews</h3>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {data.reviews.length > 0 ? (
-                data.reviews.map((review) => (
-                  <div
-                    className="p-4 border rounded shadow-sm bg-secondary-light flex flex-col justify-between"
-                    key={review.id}
-                  >
-                    <div className="mb-4">
-                      <StarRating rating={review.rating} />
-                    </div>
-                    <blockquote>
-                      <i>{review.description}</i>
-                      <cite className="flex gap-2 justify-end items-center">
-                        <span className="text-sm text-neutral-muted">-</span>
-                        <p className="text-sm text-neutral-muted">{review.username}</p>
-                      </cite>
-                    </blockquote>
-                  </div>
-                ))
-              ) : (
-                <div>No customer reviews yet.</div>
-              )}
-            </div>
+            <Reviews reviews={data.reviews} />
           </article>
         </div>
       </div>
