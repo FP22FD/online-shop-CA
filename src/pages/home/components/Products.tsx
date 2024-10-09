@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useFetchProducts } from '../../hooks/fetchProducts';
+import { useFetchProducts } from '../hooks/fetchProducts';
 import Card from './Card';
-import { Product } from '../../types/products.type';
+import { Product } from '../../../types/products.type';
 import SearchBar from './AutocompleteSearchBar';
-import Spinner from '../../components/shared/Spinner';
+import Spinner from '../../../shared/components/Spinner';
 
 const Products = () => {
   const { data, error, loading } = useFetchProducts();

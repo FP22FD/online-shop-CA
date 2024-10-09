@@ -1,5 +1,5 @@
-import { calculateSubtotal, calculateTotalDisc } from '../../components/shared/Calculations';
-import { CartProduct } from '../../types/products.type';
+import { calculateSubtotal, calculateTotalDisc } from './calculations';
+import { CartProduct } from '../../types/CartProduct.type';
 
 export const calculateCartTotals = (cart: CartProduct[]) => {
   const subtotal = calculateSubtotal(cart);

@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { IoMenuOutline, IoCloseOutline, IoCartOutline } from 'react-icons/io5';
-import CartContext from '../../pages/cart/CartContext';
+import CartContext from '../../contexts/CartContext';
 
 function Header() {
   return (
@@ -18,18 +18,14 @@ function Header() {
 export default Header;
 
 export function CartIcon() {
-  //1. Get cart by CartContext to access the current cart state
   const cartContext = useContext(CartContext);
 
   if (!cartContext) {
     return null;
   }
 
-  //destructuring new variable
   const { cart } = cartContext;
 
-  //2. Calculate total quantity
-  //reduce sum up the quantity of each item and if quantity is undefined, the value is 0
   const totalQuantity = cart.reduce((prevValue, CurrentValue) => prevValue + (CurrentValue.quantity || 0), 0);
 
   return (

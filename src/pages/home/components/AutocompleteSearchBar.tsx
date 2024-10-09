@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/products.type';
+import { Product } from '../../../types/products.type';
 
 interface SearchBarProps {
   products: Product[];

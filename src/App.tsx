@@ -1,12 +1,12 @@
-import Checkout from '../pages/checkout/Checkout';
-import Contact from '../pages/contact/Contact';
-import Home from '../pages/home/Home';
-import Layout from '../components/layout/Layout';
-import PageNotFound from '../pages/notFound/NotFound';
-import Cart from '../pages/cart/Cart';
-import ProductDetails from '../pages/product/ProductDetails';
-import Products from '../pages/home/Products';
-import { CartProvider } from '../pages/cart/CartContext';
+import Checkout from './pages/checkout/Checkout';
+import Contact from './pages/contact/Contact';
+import Home from './pages/home/Home';
+import Layout from './shared/components/Layout';
+import PageNotFound from './pages/notFound/NotFound';
+import Cart from './pages/cart/Cart';
+import ProductDetails from './pages/product/ProductDetails';
+import Products from './pages/home/components/Products';
+import { CartProvider } from './contexts/CartContext';
 import { createBrowserRouter, Link, RouterProvider, useRouteError } from 'react-router-dom';
 
 function ErrorPage() {

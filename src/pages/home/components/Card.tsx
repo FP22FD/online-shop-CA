@@ -1,5 +1,5 @@
-import StarRating from '../../components/shared/StarRating';
-import { Product } from '../../types/products.type';
+import StarRating from '../../../shared/components/StarRating';
+import { Product } from '../../../types/products.type';
 import { Link } from 'react-router-dom';
 
 type CardProps = {

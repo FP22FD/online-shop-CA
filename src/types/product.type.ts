@@ -1,17 +1,15 @@
-/** GET all products response. */
-export interface AllProductsResponse {
-  data: Product[];
+/** GET product detail response. */
+export interface ProductResponse {
+  data: SingleProduct;
   meta: Meta;
 }
 
-export interface Product {
+export interface SingleProduct {
   id: string;
   title: string;
   description: string;
   price: number;
   discountedPrice: number;
-  //   image: HTMLImageElement;
-  // src: string;
   image: Image;
   rating: number;
   tags: string[];
