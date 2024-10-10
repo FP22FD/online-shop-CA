@@ -1,4 +1,6 @@
 //storage API endpoints
 
-export const API_PRODUCTS = 'https://v2.api.noroff.dev/online-shop';
-export const API_PRODUCT = (id: string) => `https://v2.api.noroff.dev/online-shop/${id}`;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+export const API_PRODUCTS = `${API_BASE_URL}/online-shop/`;
+export const API_PRODUCT = (id: string) => `${API_BASE_URL}/online-shop/${id}`;
