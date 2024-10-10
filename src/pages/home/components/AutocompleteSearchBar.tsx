@@ -41,7 +41,7 @@ const SearchBar = ({ products }: SearchBarProps) => {
           placeholder="Search for products..."
         />
         {filterProducts.length > 0 && searchTerm.length > 0 && (
-          <ul className="absolute z-10 w-full bg-neutral-light border border-secondary rounded mt-1 max-h-fit overflow-none shadow-lg">
+          <ul className="absolute z-10 w-full bg-neutral-light border border-secondary-dark rounded mt-1 max-h-fit overflow-none shadow-lg">
             {filterProducts.map((product) => {
               return (
                 <li key={product.id} className="px-4 py-2 cursor-pointer hover:bg-gray-100">
@@ -52,7 +52,7 @@ const SearchBar = ({ products }: SearchBarProps) => {
           </ul>
         )}
         {showMessage && searchTerm.length > 0 && filterProducts.length === 0 && (
-          <section className="absolute z-10 w-full bg-secondary-light border border-secondary rounded mt-1 max-h-48 shadow-lg p-2 text-center">
+          <section className="absolute z-10 w-full bg-secondary-light border border-secondary-dark rounded mt-1 max-h-48 shadow-lg p-2 text-center">
             <div className=" py-2 list-none text-neutral-muted flex flex-col">
               <span className="font-semibold mb-2">Unfortunately, your search returned no results</span>
               <span className="text-sm">Please try other search terms</span>
