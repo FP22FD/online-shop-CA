@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useFetchProducts } from '../hooks/fetchProducts';
 import Card from './Card';
 import { Product } from '../../../types/products.type';
-import SearchBar from './AutocompleteSearchBar';
+import SearchBar from './AutoCompleteSearchBar';
 import Spinner from '../../../shared/components/Spinner';
 
 const Products = () => {
