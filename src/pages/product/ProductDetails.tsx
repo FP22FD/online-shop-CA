@@ -13,6 +13,7 @@ const ProductDetails = () => {
 
   const { id } = useParams<{ id: string }>();
   const { data, error, loading } = useFetchProduct(id || '');
+  console.log('ID:', id);
 
   const cartContext = useContext(CartContext);
   const { addToCart } = cartContext;
@@ -28,27 +29,27 @@ const ProductDetails = () => {
   if (error) {
     return (
       <div role="alert" className="text-center my-5 py-5">
-        {error}
+        <div className="flex flex-col items-center justify-center h-64 mx-4">
+          <h2 className="text-xl  font-semibold text-error">{error}</h2>
+          <p className="text-light text-center text-sm m-8">
+            The product you're looking for doesn't exist. It may have been removed or is unavailable.
+          </p>
+          <Link
+            to="/"
+            className="mt-4 px-4 py-2 rounded font-bold bg-primary-light text-primary-dark hover:bg-primary hover:text-neutral-light transition-colors duration-200"
+          >
+            Go back to store
+          </Link>
+        </div>
       </div>
     );
   }
 
   if (!data) {
-    return (
-      <div className="flex flex-col items-center justify-center h-64 mx-4">
-        <h2 className="text-xl  font-semibold text-error">Product not found</h2>
-        <p className="text-light text-center text-sm m-8">
-          The product you're looking for doesn't exist. It may have been removed or is unavailable.{' '}
-        </p>
-        <Link
-          to="/"
-          className="mt-4 px-4 py-2 rounded font-bold bg-primary-light text-primary-dark hover:bg-primary hover:text-neutral-light transition-colors duration-200"
-        >
-          Go back to store
-        </Link>
-      </div>
-    );
+    return;
   }
+
+  document.title = `Online Shop | ${data.title}`;
 
   const product: CartProduct = {
     id: data.id,
