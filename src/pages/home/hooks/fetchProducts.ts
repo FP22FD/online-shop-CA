@@ -9,8 +9,8 @@ export function useFetchProducts() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
+    const productsController = new AbortController();
+    const { signal } = productsController;
 
     const fechtData = async () => {
       try {
@@ -19,7 +19,7 @@ export function useFetchProducts() {
         if (response.ok) {
           const productsData: AllProductsResponse = await response.json();
 
-          if (!controller.signal.aborted) {
+          if (!productsController.signal.aborted) {
             const data = productsData.data;
             setData(data);
             console.log(data);
@@ -46,7 +46,7 @@ export function useFetchProducts() {
     fechtData();
 
     return () => {
-      controller.abort();
+      productsController.abort();
     };
   }, []);
 
