@@ -12,13 +12,14 @@ export function useFetchProduct(id: string): { data: SingleProduct | null; loadi
     const controller = new AbortController();
     const { signal } = controller;
 
-    const fechtData = async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch(API_PRODUCT(id), { signal });
 
         if (response.ok) {
           const productData: ProductResponse = await response.json();
           const data = productData.data;
+
           console.log(productData);
           setData(data);
           setError('');
@@ -39,7 +40,7 @@ export function useFetchProduct(id: string): { data: SingleProduct | null; loadi
       }
     };
 
-    fechtData();
+    fetchData();
 
     return () => {
       controller.abort();
