@@ -72,9 +72,11 @@ The web application code has been validated using the following tools:
 
 To set up the development environment:
 
-1. Ensure you have Node.js installed (> 20).
-2. Clone the repository.
-3. Run the following commands
+1. Fill `.env` following `.env.example`:
+2. Specify VITE_API_BASE_URL (the base API url `/online-shop/`)
+3. Ensure you have Node.js installed (> 20).
+4. Clone the repository.
+5. Run the following commands
 
 ```console
 > npm install
