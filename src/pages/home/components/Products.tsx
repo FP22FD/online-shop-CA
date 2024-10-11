@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFetchProducts } from '../hooks/fetchProducts';
 import { Product } from '../../../types/products.type';
-import SearchBar from './AutoCompleteSearchBar';
+import { SearchBar } from './AutoCompleteSearchBar';
 import Spinner from '../../../shared/components/Spinner';
 import { SEO } from '../../../shared/components/SEO';
 import Card from './Card';

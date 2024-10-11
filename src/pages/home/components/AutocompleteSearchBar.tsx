@@ -6,7 +6,7 @@ interface SearchBarProps {
   products: Product[];
 }
 
-const SearchBar = ({ products }: SearchBarProps) => {
+export const SearchBar = ({ products }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMessage, setShowMessage] = useState(false);
 
@@ -64,4 +64,4 @@ const SearchBar = ({ products }: SearchBarProps) => {
   );
 };
 
-export default SearchBar;
+// export default SearchBar;
