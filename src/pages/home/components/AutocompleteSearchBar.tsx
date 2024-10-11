@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../types/products.type';
 
-interface SearchBarProps {
+interface Props {
   products: Product[];
 }
 
-export const SearchBar = ({ products }: SearchBarProps) => {
+const AutoCompleteSearchBar = ({ products }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMessage, setShowMessage] = useState(false);
 
@@ -64,4 +64,4 @@ export const SearchBar = ({ products }: SearchBarProps) => {
   );
 };
 
-// export default SearchBar;
+export default AutoCompleteSearchBar;
