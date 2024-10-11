@@ -4,7 +4,7 @@ import { Product } from '../../../types/products.type';
 import Spinner from '../../../shared/components/Spinner';
 import { SEO } from '../../../shared/components/SEO';
 import Card from './Card';
-import AutoCompleteSearchBar from './AutoCompleteSearchBar';
+import SearchBar from './SearchBar';
 
 const Products = () => {
   const { data, error, loading } = useFetchProducts();
@@ -21,7 +21,7 @@ const Products = () => {
         description="Browse our wide range of products and find what you're looking for!"
       />
 
-      <AutoCompleteSearchBar products={filteredProducts} />
+      <SearchBar products={filteredProducts} />
       <div className="border-b border-secondary-dark m-5 flex justify-between text-sm">
         <button type="button" className="text-dark flex items-center pb-2 pr-2 border-b-2 border-primary uppercase">
           <h1 className="font-semibold inline-block">Products</h1>

@@ -6,7 +6,7 @@ interface Props {
   products: Product[];
 }
 
-const AutoCompleteSearchBar = ({ products }: Props) => {
+const SearchBar = ({ products }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMessage, setShowMessage] = useState(false);
 
@@ -64,4 +64,4 @@ const AutoCompleteSearchBar = ({ products }: Props) => {
   );
 };
 
-export default AutoCompleteSearchBar;
+export default SearchBar;
