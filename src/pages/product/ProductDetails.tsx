@@ -3,20 +3,19 @@ import StarRating from '../../shared/components/StarRating';
 import { useFetchProduct } from './hooks/fetchProduct';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Spinner from '../../shared/components/Spinner';
-import { useContext, useState } from 'react';
-import CartContext from '../../contexts/CartContext';
 import { CartProduct } from '../../types/CartProduct.type';
+import { SEO } from '../../shared/components/SEO';
 import Reviews from './components/Reviews';
+import { useState } from 'react';
+import useCartStore from '../../store/cartStore';
 
 const ProductDetails = () => {
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
 
   const { id } = useParams<{ id: string }>();
   const { data, error, loading } = useFetchProduct(id || '');
-  console.log('ID:', id);
 
-  const cartContext = useContext(CartContext);
-  const { addToCart } = cartContext;
+  const { addToCart } = useCartStore();
 
   if (loading) {
     return (
@@ -49,8 +48,6 @@ const ProductDetails = () => {
     return;
   }
 
-  document.title = `Online Shop | ${data.title}`;
-
   const product: CartProduct = {
     id: data.id,
     title: data.title,
@@ -79,6 +76,11 @@ const ProductDetails = () => {
 
   return (
     <section className="flex-grow">
+      <SEO
+        title={`${data.title} | Online Shop`}
+        description={data.description || 'Explore the specifications and features of this product!'}
+      />
+
       <div className="container mx-auto mt-10 md:px-8 lg:px-16 xl:px-24">
         <div className="flex items-center mb-2">
           <Link

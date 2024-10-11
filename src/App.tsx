@@ -6,13 +6,10 @@ import PageNotFound from './pages/notFound/NotFound';
 import Cart from './pages/cart/Cart';
 import ProductDetails from './pages/product/ProductDetails';
 import Products from './pages/home/components/Products';
-import { CartProvider } from './contexts/CartContext';
-import { createBrowserRouter, Link, RouterProvider, useRouteError } from 'react-router-dom';
+import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 function ErrorPage() {
-  const error = useRouteError();
-  console.error(error);
-  // Uncaught ReferenceError: path is not defined
   return (
     <div>
       <h1 className="text-3xl text-neutral-grayish-blue text-center">An error has occurred.</h1>
@@ -62,9 +59,9 @@ function App() {
   ]);
 
   return (
-    <CartProvider>
+    <HelmetProvider>
       <RouterProvider router={router} />
-    </CartProvider>
+    </HelmetProvider>
   );
 }
 

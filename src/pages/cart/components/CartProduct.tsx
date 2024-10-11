@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react';
-import CartContext from '../../../contexts/CartContext';
+import { useState } from 'react';
 import { TbTrash } from 'react-icons/tb';
 import PriceDisplay from './PriceDisplay';
 import { Link } from 'react-router-dom';
+import useCartStore from '../../../store/cartStore';
 
 function CartProduct() {
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
-  const cartContext = useContext(CartContext);
-  const { cart, removeToCart } = cartContext;
+  const { cart, removeToCart } = useCartStore();
 
   const handleRemove = (productId: string) => {
     removeToCart(productId);

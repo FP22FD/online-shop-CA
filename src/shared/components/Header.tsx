@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { IoMenuOutline, IoCloseOutline, IoCartOutline } from 'react-icons/io5';
-import CartContext from '../../contexts/CartContext';
+import useCartStore from '../../store/cartStore';
 
 function Header() {
   return (
@@ -18,15 +18,13 @@ function Header() {
 export default Header;
 
 export function CartIcon() {
-  const cartContext = useContext(CartContext);
-
-  if (!cartContext) {
-    return null;
-  }
-
-  const { cart } = cartContext;
+  const { cart } = useCartStore();
 
   const totalQuantity = cart.reduce((prevValue, CurrentValue) => prevValue + (CurrentValue.quantity || 0), 0);
+
+  if (!cart) {
+    return null;
+  }
 
   return (
     <Link to={'/cart'} className="relative text-3xl" aria-label="View cart">

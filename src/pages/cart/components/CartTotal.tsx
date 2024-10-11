@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-import CartContext from '../../../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
+import useCartStore from '../../../store/cartStore';
 
 function Summary() {
   const navigate = useNavigate();
-  const cartContext = useContext(CartContext);
-  const { cart, clearCart, subtotal, totalDiscount, totalPrice } = cartContext;
+  const { cart, clearCart, subtotal, totalDiscount, totalPrice } = useCartStore();
 
   function handleCheckout(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
