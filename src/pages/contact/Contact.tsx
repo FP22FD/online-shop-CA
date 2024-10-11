@@ -1,10 +1,16 @@
 import { IoArrowBackOutline, IoCall, IoLocationSharp, IoMail } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import Form from './components/Form';
+import { SEO } from '../../shared/components/SEO';
 
 const Contact = () => {
   return (
     <section className="flex-grow">
+      <SEO
+        title="Contact Us| Online Shop"
+        description="Fill out the form below to contact our customer support team."
+      />
+
       <div className="container mx-auto mt-10 md:px-8 lg:px-16 xl:px-24">
         <div className="flex items-center mb-2">
           <Link

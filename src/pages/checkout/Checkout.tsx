@@ -1,9 +1,12 @@
 import { IoArrowBackOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { SEO } from '../../shared/components/SEO';
 
 const Checkout = () => {
   return (
     <section className="flex h-screen justify-center items-center">
+      <SEO title="Checkout | Online Shop" description="Thank you for shopping with us!" />
+
       <div className="container mx-auto flex flex-col items-center justify-center mt-10 shadow-md p-10 ">
         <div className="flex justify-center items-center text-6xl text-success ">
           <IoCheckmarkCircleOutline />

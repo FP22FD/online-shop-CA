@@ -2,10 +2,13 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import Summary from './components/CartTotal';
 import CartProduct from './components/CartProduct';
+import { SEO } from '../../shared/components/SEO';
 
 function Items() {
   return (
     <section className="flex-grow">
+      <SEO title="Your Cart | Online Shop" description="Review your selected items before proceeding to checkout." />
+
       <div className="container mx-auto mt-10 px-4 md:px-8 lg:px-16 xl:px-24">
         <div className="flex items-center">
           <Link
