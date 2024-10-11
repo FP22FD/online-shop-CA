@@ -22,7 +22,6 @@ export function useFetchProducts() {
           if (!productsController.signal.aborted) {
             const data = productsData.data;
             setData(data);
-            console.log(data);
 
             setError('');
           }
@@ -35,7 +34,6 @@ export function useFetchProducts() {
       } catch (e) {
         if (e instanceof Error && e.name !== 'AbortError') {
           setError('Could not show the products!');
-          console.log(e);
           setData(null);
         }
       } finally {

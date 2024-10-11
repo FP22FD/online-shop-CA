@@ -20,7 +20,6 @@ export function useFetchProduct(id: string): { data: SingleProduct | null; loadi
           const productData: ProductResponse = await response.json();
           const data = productData.data;
 
-          console.log(productData);
           setData(data);
           setError('');
         } else {
@@ -32,7 +31,6 @@ export function useFetchProduct(id: string): { data: SingleProduct | null; loadi
       } catch (e) {
         if (e instanceof Error && e.name !== 'AbortError') {
           setError('Could not show the product!');
-          console.log(e);
           setData(null);
         }
       } finally {
