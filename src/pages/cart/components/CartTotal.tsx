@@ -24,7 +24,7 @@ function Summary() {
                 <span>{subtotal}</span>
               </p>
               <p className="flex justify-between text-sm">
-                Discount<span>{totalDiscount}</span>
+                Discount<span>{totalDiscount.toFixed(2)}</span>
               </p>
               <p className="flex justify-between text-sm">
                 Shipping
