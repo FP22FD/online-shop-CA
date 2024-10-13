@@ -1,4 +1,5 @@
 import StarRating from '../../../shared/components/StarRating';
+import { calculateDiscount } from '../../../shared/utils/calculations';
 import { Product } from '../../../types/products.type';
 import { Link } from 'react-router-dom';
 
@@ -11,12 +12,7 @@ function Card({ data }: CardProps) {
 
   const altText = data.image.alt || 'Image of' + data.title;
 
-  const discountExists = data.discountedPrice < data.price;
-  const discountAmount = discountExists ? (data.price - data.discountedPrice).toFixed() : '0.00';
-
-  const discountPercentage = discountExists
-    ? (((data.price - data.discountedPrice) / data.price) * 100).toFixed()
-    : '0.00';
+  const { exists, amount, percentage } = calculateDiscount(data.price, data.discountedPrice);
 
   return (
     <div
@@ -27,9 +23,9 @@ function Card({ data }: CardProps) {
         <div className="relative">
           <Link to={`/products/${data.id}`}>
             <img className="w-full object-cover h-48 rounded" width={500} src={data.image.url} alt={altText} />
-            {discountExists && (
+            {exists && (
               <div className="bg-accent-purple text-neutral-light text-lg font-semibold absolute p-6  top-1 right-1 w-10 h-10 shrink-0 grow-0 rounded-full inline-flex items-center justify-center">
-                {discountPercentage}%
+                {percentage}%
               </div>
             )}
           </Link>
@@ -61,7 +57,7 @@ function Card({ data }: CardProps) {
         <div className="flex items-end justify-between mt-4">
           <div className="flex flex-col">
             <div className="flex gap-2 items-center">
-              {discountExists ? (
+              {exists ? (
                 <p>
                   <span className="text-text line-through text-xs">{data.price}</span>
                 </p>
@@ -72,14 +68,12 @@ function Card({ data }: CardProps) {
               )}
 
               <p className="hidden">
-                {discountExists && (
-                  <span className="text-text text-xs bg-primary-light rounded p-[1px]">Save{discountAmount}</span>
-                )}
+                {exists && <span className="text-text text-xs bg-primary-light rounded p-[1px]">Save{amount}</span>}
               </p>
             </div>
 
             <div className="font-medium">
-              {discountExists && <p className="text-text justify-center">{data.discountedPrice}</p>}
+              {exists && <p className="text-text justify-center">{data.discountedPrice}</p>}
             </div>
           </div>
 

@@ -3,6 +3,7 @@ import { TbTrash } from 'react-icons/tb';
 import PriceDisplay from './PriceDisplay';
 import { Link } from 'react-router-dom';
 import useCartStore from '../../../store/cartStore';
+import { calculateDiscount } from '../../../shared/utils/calculations';
 
 function CartProduct() {
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
@@ -27,10 +28,7 @@ function CartProduct() {
       {cart.length > 0 ? (
         cart.map((product) => {
           const discountedPrice = product.discountedPrice || 0;
-          const discountExists = product.price > discountedPrice;
-          const discountPercentage = discountExists
-            ? (((product.price - discountedPrice) / product.price) * 100).toFixed(0)
-            : '0';
+          const { exists, percentage } = calculateDiscount(product.price, discountedPrice);
 
           return (
             <div key={product.id} className="flex sm:flex-row gap-2 p-5">
@@ -45,10 +43,10 @@ function CartProduct() {
                     />
                   </Link>
                 </div>
-                {discountExists && (
+                {exists && (
                   <div className="absolute right-1 top-1 flex items-center">
                     <div className="bg-accent-purple text-neutral-light flex items-center justify-center rounded-full font-semibold text-xs p-4 w-6 h-6">
-                      {discountPercentage}%
+                      {percentage}%
                     </div>
                   </div>
                 )}

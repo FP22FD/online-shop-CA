@@ -10,6 +10,7 @@ import ProductImage from './components/ProductImage';
 import ProductInfo from './components/ProductInfo';
 import ProductFeedback from './components/ProductFeedback';
 import useCartStore from '../../store/cartStore';
+import { calculateDiscount } from '../../shared/utils/calculations';
 
 const ProductDetails = () => {
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
@@ -59,11 +60,7 @@ const ProductDetails = () => {
     quantity: 1,
   };
 
-  const discountExists = data.discountedPrice < data.price;
-  const discountAmount = discountExists ? (data.price - data.discountedPrice).toFixed(2) : '0.00';
-  const discountPercentage = discountExists
-    ? (((data.price - data.discountedPrice) / data.price) * 100).toFixed()
-    : '0.00';
+  const { exists, amount, percentage } = calculateDiscount(data.price, data.discountedPrice);
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -104,16 +101,16 @@ const ProductDetails = () => {
               <ProductImage
                 imageUrl={data.image.url}
                 imageAlt={data.image.alt}
-                discountExists={discountExists}
-                discountPercentage={discountPercentage}
+                discountExists={exists}
+                discountPercentage={percentage}
               />
             </div>
             <div className="w-full md:w-2/3">
               <ProductInfo
                 product={data}
                 onAddToCart={handleAddToCart}
-                discountExists={discountExists}
-                discountAmount={discountAmount}
+                discountExists={exists}
+                discountAmount={amount}
               />
             </div>
           </div>
