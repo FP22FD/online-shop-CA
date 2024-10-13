@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IoLogoFacebook, IoLogoInstagram, IoLogoTiktok } from 'react-icons/io5';
+import { IoLogoFacebook, IoLogoInstagram, IoLogoTiktok, IoHeart } from 'react-icons/io5';
 
 function Footer() {
   return (
@@ -39,6 +39,10 @@ function Footer() {
 
         <div className="flex flex-col items-center p-4 text-center text-xs font-semibold">
           <p className="mb-1">&copy; 2024 Online Shop. All Rights Reserved</p>
+          <p>
+            Made with <IoHeart className="inline text-error" aria-label="heart icon" />
+            <span className="ml-1">by Fernanda Gomes</span>
+          </p>
         </div>
       </div>
     </footer>
