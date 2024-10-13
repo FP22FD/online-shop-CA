@@ -1,4 +1,4 @@
-# Online Shop CA | React & Tailwind
+# Online Shop CA | React, TypeScript & Tailwind
 
 <!-- A simple overview of use/purpose. -->
 
@@ -39,6 +39,10 @@ The application showcases several modern web development techniques and tools, e
 - Code Validation: Employs validation tools to ensure standards compliance.
 - Vertical Slices: The folder structure is organized by feature, each with its own components, styles, and tests for easier management.
 - Mobile First: The design prioritizes mobile responsiveness, ensuring an optimal experience on mobile devices before adapting to larger screens.
+
+## Additional Information
+
+While the course assignment required JavaScript, I chose to implement `TypeScript` to enhance code quality. This decision allows for strongly typed code and establishes clear API data contracts, improving maintainability and reducing potential errors.
 
 ## API
 
