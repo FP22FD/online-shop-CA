@@ -21,7 +21,9 @@ The application showcases several modern web development techniques and tools, e
 
 - CSS framework: make use of `Tailwind` CSS for rapid styling and responsive design.
 - REST API: Implements basic API features, primarily focusing on GET requests for retrieving product data.
-- React topics: `useState`, `useEffect` and `AbortController`, `custom hooks`, `useContext`.
+- React topics: `useState`, `useEffect` and `AbortController`, `custom hooks`, `Zustand` (in the main branch), and `UseContext` (in the useContext branch).
+- State Management: `Zustand` for managing cart state, including cart persistence with local storage (main branch).
+- SEO: Enhanced with Helmet async package, allowing dynamic title and description for each page (main branch).
 - Javascript Techniques:
   - Array functions: `filter`, `map` and `reduce`.
   - Destructuring for cleaner code
