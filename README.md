@@ -87,6 +87,7 @@ To set up the development environment:
 ```console
 > npm install
 > npx vitest init browser
+(> pnpm exec playwright install)
 > npm run dev
 ```
 
