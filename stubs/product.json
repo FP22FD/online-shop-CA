@@ -1,0 +1,27 @@
+{
+    "data": {
+        "id": "109566af-c5c2-4f87-86cb-76f36fb8d378",
+        "title": "Vanilla Perfume",
+        "description": "Women's perfume that smells a warm and sweet, with nuances of wood and jasmine.",
+        "price": 2599.99,
+        "discountedPrice": 2079.99,
+        "image": {
+            "url": "https://static.noroff.dev/api/online-shop/1-perfume-white.jpg",
+            "alt": ""
+        },
+        "rating": 5,
+        "tags": [
+            "perfume",
+            "beauty"
+        ],
+        "reviews": [
+            {
+                "id": "90a61e3e-355a-42e4-b038-d91dcad33c20",
+                "username": "Jim N.",
+                "rating": 5,
+                "description": "My partner loves it, its her favourite."
+            }
+        ]
+    },
+    "meta": {}
+}
