@@ -13,7 +13,7 @@ function Items() {
         <div className="flex items-center">
           <Link
             to="/"
-            className="flex items-center px-3 py-2 text-xs rounded ring-[1px] ring-primary-light ring-inset hover:bg-primary text-primary-dark hover:text-neutral font-semibold transition-colors duration-200 mb-2"
+            className="flex items-center px-3 py-2 text-xs rounded ring-[1px] ring-primary-light ring-inset hover:bg-primary text-primary-dark hover:text-neutral-light font-semibold transition-colors duration-200 mb-2"
             aria-label="Go back to store"
           >
             <IoArrowBackOutline aria-hidden="true" className="mr-2" />
